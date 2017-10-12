@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>mathfun</title>
+
+  <link rel="stylesheet" href="mathfunStyles.css">
+
+</head>
+<body>
+
+    <table id="results">
+        <tr>
+            <td>Numbers:</td>
+            <td id="list">""</td>
+        </tr>
+        <tr>
+            <td >Maximum:</td>
+            <td id="maximum">""</td>
+        </tr>
+        <tr>
+            <td>Minimum:</td>
+            <td id="minimum">""</td>
+        </tr>
+        <tr>
+            <td>Mean:</td>
+            <td id="mean">""</td>
+        </tr>
+        <tr>
+            <td>Median:</td>
+            <td id="median">""</td>
+        </tr>
+        <tr>
+            <td># of Evens:</td>
+            <td id="evens">""</td>
+        </tr>
+        <tr>
+            <td> # of Odds:</td>
+            <td id="odds">""</td>
+        </tr>
+        <tr>
+            <td>Primes:</td>
+            <td id="primes">""</td>
+        </tr>
+        <tr>
+            <td>Powers of 2:</td>
+            <td id="powerOf2">""</td>
+        </tr>
+
+    </table>
+
+    <script>
+        var input = "";
+        numbers = [];
+        while (input != "-1")
+        {
+            input = prompt("Enter positive integers, one at a time. (Enter -1 when finished.)");
+            //ADD EACH INPUT NUMBER TO AN ARRAY
+            numbers.push(Number(input));
+        }
+        //REMOVE THE LAST ARRAY ELEMENT (IT WILL BE '-1')
+        numbers.pop();
+        //SORT ARRAY ELEMENTS FROM LEAST TO GREATEST
+        numbers.sort(function(a, b){return a-b});//I'm not quite sure what this means, but found on w3schools
+
+        console.log(numbers);
+        document.getElementById("list").innerHTML = String(numbers);
+
+        //FIND MAXIMUM VALUE
+        var max = 0;
+        for (var i = 0; i < numbers.length; i++)
+            {
+                if(numbers[i] > max)
+                    {
+                        max = numbers[i]
+                    }
+            }
+        console.log("Max: " + max);
+        document.getElementById("maximum").innerHTML = String(max);
+
+        //FIND MINIMUM VALUE
+        var min = numbers[0];
+        for (var i = 0; i < numbers.length; i++)
+            {
+                if (numbers[i] < min)
+                    {
+                        min = numbers[i]
+                    }
+            }
+        console.log("Min: " + min);
+        document.getElementById("minimum").innerHTML = String(min);
+
+        //FIND MEAN VALUE
+        var mean = 0;
+        var sum = 0;
+        for (var i = 0; i < numbers.length; i++)
+            {
+                //Number() converts from string to number
+                sum = sum + Number(numbers[i]);
+            }
+        mean = sum/numbers.length;
+        console.log("sum: " + sum);
+        console.log("length: " + numbers.length);
+        console.log("Mean: " + mean);
+        document.getElementById("mean").innerHTML = String(mean);
+
+        //FIND MEDIAN VALUE
+        var midpointIndex = 0;
+        var median = 0;
+        if (numbers.length % 2 != 0)
+            {
+                midpointIndex = Math.floor(numbers.length / 2);
+                median = numbers[midpointIndex];
+            }
+        else if (numbers.length % 2 == 0)
+            {
+                var middleSum =  Number(numbers[(numbers.length/2)-1]) + Number(numbers[((numbers.length/2))]);
+                console.log("MiddleSum: " + middleSum);
+                median = middleSum / 2;
+            }
+        console.log("Median: " + median);
+        document.getElementById("median").innerHTML = String(median);
+
+        //COUNT EVEN/ODD NUMBERS
+        var evenCount = 0;
+        var oddCount = 0
+        for (var i = 0; i < numbers.length; i++)
+            {
+                if (numbers[i] % 2 == 0)
+                    {
+                        evenCount += 1;
+                    }
+                else
+                    {
+                        oddCount += 1;
+                    }
+            }
+        console.log("EvenCount: " + evenCount);
+        document.getElementById("evens").innerHTML = String(evenCount);
+        console.log("OddCount: " + oddCount);
+        document.getElementById("odds").innerHTML = String(oddCount);
+
+        //FIND POWER-OF-2
+        var powersOf2 = [];
+        var quotient = 0;
+        for (var j = 0; j < numbers.length; j++)
+                    {
+                        if (numbers[j] == 2)
+                            {
+                                console.log(numbers[j] + " is a power of 2");
+                                powersOf2.push(numbers[j]);
+                            }
+                    }
+        for (var i = 0; i < numbers.length; i++)
+            {
+                if(numbers[i] % 2 == 0)
+                    {
+                        quotient = numbers[i] / 2;
+                        while (quotient >= 1)
+                        {
+                            quotient = quotient / 2;
+                            if (quotient == 1 )
+                                {
+                                    console.log(numbers[i] + " is a power of 2");
+                                    powersOf2.push(numbers[i]);
+                                }
+                        }
+                    }
+            }
+
+        console.log("Powers of 2: " + powersOf2);
+        document.getElementById("powerOf2").innerHTML = String(powersOf2);
+
+        //FIND PRIME NUMBERS
+        var primesList = [];
+        for (var i = 0; i < numbers.length; i++)
+            {
+                var numDivisors = 1;
+                for (var j = 2; j < numbers[i]; j++)
+                {
+
+                    if (numbers[i] % j ===0)
+                        {
+                            //console.log(numbers[i] + " is NOT prime");
+                            numDivisors ++;
+                        }
+                }
+                if (numDivisors == 1)
+                    {
+                        console.log(numbers[i] + " is prime");
+                        primesList[i] = numbers[i];
+                    }
+                else
+                    {
+                        console.log(numbers[i] + " is NOT prime");
+                    }
+            }
+            console.log("Primes: " + primesList);
+            document.getElementById("primes").innerHTML = String(primesList);
+
+
+
+
+    </script>
+
+
+</body>
+</html>

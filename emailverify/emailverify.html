@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>emailverify</title>
+</head>
+<body>
+    <div id="input">
+        <form name="inputForm">
+            <p>Enter some text.</p>
+            <input type="text" id='inputText'/>
+            <input type="button" name="processButton" value="Process text"/>
+        </form>
+    </div>
+
+    <div id="output">
+        <img src="" width="100px" height="100px">
+    </div>
+
+
+    <script>
+        var processButton = document.inputForm.processButton;
+            processButton.addEventListener("click", output);
+
+            function output()
+            {
+                var checkpoints = 0;
+                var atSymbolIndex = 0;
+                var inputText = document.getElementById('inputText').value;
+                var isValid = false;
+                console.log(inputText);
+
+                //check to see if 1 or more characters followed by at symbol
+                for (var i = 1; i < inputText.length; i++)
+                    {
+                        if (inputText[i] === "@")
+                            {
+                                checkpoints++;
+                                atSymbolIndex = i;
+                                console.log("At symbol at index " + atSymbolIndex);
+                                for (var j = atSymbolIndex + 2; j < inputText.length - 1; j++)
+                                    {
+                                        if (inputText[j] === ".")
+                                            {
+                                                checkpoints++;
+                                                console.log("Period at index " + j);
+                                            }
+                                    }
+                            }
+                    }
+                    if (checkpoints === 2)
+                        {
+                            console.log("VALID");
+                            isValid = true;
+                            document.images[0].src = "smile.png";
+                        }
+                    else
+                        {
+                            console.log("INVALID");
+                            isValid = false;
+                            document.images[0].src = "frown.png";
+                        }
+            }
+    </script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>morsecode</title>
+</head>
+<body>
+    <div id="input">
+            <form name="inputForm">
+                <p>Enter some text.</p>
+                <input type="text" id='inputText'/>
+                <input type="button" name="processButton" value="Process text"/>
+            </form>
+    </div>
+
+    <div id="output">
+        <form name="outputForm">
+        <p>Processed text</p>
+            <!--<input type="text" id="outputText"/>-->
+            <textarea id="outputText"></textarea>
+        </form>
+    </div>
+
+
+    <script>
+        var processButton = document.inputForm.processButton;
+        processButton.addEventListener("click", output);
+
+        function output()
+        {
+            var inputText = document.getElementById('inputText').value;
+            console.log(inputText);
+
+            //Process input morse code
+
+            var words = inputText.split("   ");
+            console.log("Words: " + words);
+
+            var englishLetters = [];
+            var englishWords = [];
+            var englishLetter = "0";
+            var completedEnglishPhrase = "";
+            for (var i = 0; i < words.length; i++)
+                {
+                    var letters = words[i].split(" ");
+                    console.log("Letters: " + letters);
+                    for (var j = 0; j < letters.length; j++)
+                        {
+                            var letter = letters[j];
+                            console.log("Letter: " + letter);
+                            switch (letter)
+                            {
+                                case ".-":
+                                    englishLetter = "A";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case "-...":
+                                    englishLetter = "B";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case "-.-.":
+                                    englishLetter = "C";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case "-..":
+                                    englishLetter = "D";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case ".":
+                                    englishLetter = "E";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case "..-.":
+                                    englishLetter = "F";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case "--.":
+                                    englishLetter = "G";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case "....":
+                                    englishLetter = "H";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case "..":
+                                    englishLetter = "I";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case ".---":
+                                    englishLetter = "J";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case "-.-.":
+                                    englishLetter = "K";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case ".-..":
+                                    englishLetter = "L";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case "--":
+                                    englishLetter = "M";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case "-.":
+                                    englishLetter = "N";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case "---":
+                                    englishLetter = "O";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case ".--.":
+                                    englishLetter = "P";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case "--.-":
+                                    englishLetter = "Q";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case ".-.":
+                                    englishLetter = "R";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case "...":
+                                    englishLetter = "S";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case "-":
+                                    englishLetter = "T";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case "..-":
+                                    englishLetter = "U";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case "...-":
+                                    englishLetter = "V";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case ".--":
+                                    englishLetter = "W";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case "-..-":
+                                    englishLetter = "X";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case "-.--":
+                                    englishLetter = "Y";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                                case "--..":
+                                    englishLetter = "Z";
+                                    console.log(englishLetter);
+                                    englishLetters.push(englishLetter);
+                                    break;
+                            }
+
+                        }
+                    //Has completed word, so manipulate word here before clearing for next word
+                    console.log(englishLetters);
+                    var englishWord = englishLetters.join("");
+                    console.log(englishWord);
+                    englishWords.push(englishWord);
+
+                    englishLetters = [];
+
+                }
+                console.log(englishWords);
+                completedEnglishPhrase = englishWords.join(" ");
+                console.log(completedEnglishPhrase);//***********************OUTPUT***********************
+
+                var outputText = document.getElementById('outputText').value = completedEnglishPhrase;
+        }
+
+            /*var sentences = inputText.split("   ");
+            console.log("Sentences: " + sentences);
+
+            var englishLetters = [];
+            var englishWords = [];
+            var englishLetter = "0";
+            for (var i = 0; i < sentences.length; i++)
+                {
+                    var words = sentences[i].split(" ");
+                    console.log("words: " + words);
+                    for (var j = 0; j < words.length; j++)
+                        {
+                            var letter = words[j];
+                            console.log("letter: " + letter);
+                            //for (var k = 0; k < letter.length; k++)
+                                //{
+                                    switch(letter)
+                                    {
+                                        case ".-":
+                                            englishLetter = "A";
+                                            console.log(englishLetter);
+                                            englishLetters.push(englishLetter);
+                                            break;
+                                        case "-...":
+                                            englishLetter = "B";
+                                            console.log(englishLetter);
+                                            englishLetters.push(englishLetter);
+                                    }
+                                //}
+                        }
+                        console.log("English letters: " + englishLetters);
+                        englishWords.push(englishLetters);
+                }
+            console.log("English words: " + englishWords);
+        }*/
+
+    </script>
+</body>
+</html>

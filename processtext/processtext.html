@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ProcessText</title>
+</head>
+<body>
+    <div id="input">
+        <form name="inputForm">
+            <p>Enter some text.</p>
+            <input type="text" id='inputText'/>
+            <input type="button" name="processButton" value="Process text"/>
+        </form>
+    </div>
+
+    <div id="output">
+        <form name="outputForm">
+        <p>Processed text</p>
+            <!--<input type="text" id="outputText"/>-->
+            <textarea id="outputText"></textarea>
+        </form>
+    </div>
+
+
+    <script>
+        var processButton = document.inputForm.processButton;
+
+        function output()
+        {
+            var inputText = document.getElementById('inputText').value;
+            console.log(inputText);
+
+            //Process inputText
+            var words = inputText.split(" ");
+            var i = 0;
+            var j = 0;
+            var word;
+            var count = 0;
+            var frequencies = [];
+            for (i = 0; i < words.length; i++)
+            {
+                word = words[i];
+                for (j = 0; j < words.length; j++)
+                {
+                    if (words[j] == words[i])
+                    {
+                        count += 1;
+                    }
+                }
+                console.log(words[i] + " frequency = " + count);
+                //add frequency counts to an array
+
+                frequencies[i] = " " + words[i].toUpperCase() + " " + count;
+
+
+                //var outputText = document.getElementById('outputText').value = frequencies;
+
+                count = 0;
+            }
+            console.log(frequencies);
+            //REMOVES DUPLICATE FREQUENCY REPORTS FROM ARRAY
+            var countDuplicates = 0;
+            for (var m = 0; m < words.length; m++)
+                {
+                    for (var n = 0; n < words.length; n++)
+                        {
+                            if(frequencies[n] == frequencies[m])
+                                {
+                                    countDuplicates += 1;
+                                    console.log(frequencies[n], countDuplicates);
+                                    if(countDuplicates > 1)
+                                        {
+                                            delete frequencies[n];
+                                        }
+                                }
+                        }
+                    countDuplicates = 0;
+                }
+
+            var outputText = document.getElementById('outputText').value = frequencies;
+        }
+
+        processButton.addEventListener("click", output);
+    </script>
+</body>
+</html>
